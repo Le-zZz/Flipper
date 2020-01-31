@@ -5,10 +5,12 @@ using UnityEngine;
 public class ball : MonoBehaviour
 {
     ballLauncher ballLauncher;
+    Rigidbody2D body;
     // Start is called before the first frame update
     void Start()
     {
         ballLauncher = FindObjectOfType<ballLauncher>();
+        body = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
