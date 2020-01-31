@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ball : MonoBehaviour
 {
-    ballManager BallManager;
+    ballLauncher ballLauncher;
     // Start is called before the first frame update
     void Start()
     {
-        BallManager = FindObjectOfType<ballManager>();
+        ballLauncher = FindObjectOfType<ballLauncher>();
     }
 
     // Update is called once per frame
@@ -16,13 +16,14 @@ public class ball : MonoBehaviour
     {
         
     }
-    private void Destroy()
+    private void DestroyBall()
     {
-       // BallManager.ballLaunched();
+        Debug.Log("1");
+       ballLauncher.ballDestroyed();
         Destroy(gameObject);
     }
     private void OnBecameInvisible()
     {
-        Destroy();
+        DestroyBall();
     }
 }

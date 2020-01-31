@@ -8,24 +8,46 @@ public class ballLauncher : MonoBehaviour
     [SerializeField] GameObject prefabBall;
     [SerializeField] float ballSpeed;
     int ballsToLaunch;
-    ballManager BallManager;
-    
+    bool canLaunch = true;
+    [SerializeField] int remainingBalls = 4;
+    int inGameBalls = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         ballSpawnPoint = gameObject.transform;
-        BallManager = FindObjectOfType<ballManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown("space"))
+        checkLaunch();
+        if(Input.GetKeyDown("space")&& canLaunch)
         {
-            //BallManager.ballLaunched();
+            ballLaunched();
             GameObject ball = Instantiate(prefabBall, ballSpawnPoint);
             ball.GetComponent<Rigidbody2D>().velocity = Vector2.up * ballSpeed;
+        }
+    }
+    public void ballLaunched()
+    {
+        inGameBalls++;
+        remainingBalls--;
+    }
+    public void ballDestroyed()
+    {
+        Debug.Log("3");
+        inGameBalls--;
+    }
+    void checkLaunch()
+    {
+        if (inGameBalls <= 0)
+        {
+            canLaunch = true;
+        }
+        else
+        {
+            canLaunch = false;
         }
     }
 }
