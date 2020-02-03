@@ -6,8 +6,10 @@ public class ScreenShakeBehavior : MonoBehaviour
 {
  
     private float screenShakeTime = 0f;
-    private float screenShakeMagnitude = 0.7f;
+    private float screenShakeMagnitude = 0.1f;
     private float fadingSpeed = 1.0f;
+
+    private float initialScreenShakeTime = 0f;
 
     private Vector3 initialPosition;
 
@@ -20,7 +22,7 @@ public class ScreenShakeBehavior : MonoBehaviour
     {
         if(screenShakeTime > 0f)
         {
-            transform.localPosition = initialPosition + Random.insideUnitSphere * screenShakeMagnitude;
+            transform.localPosition = initialPosition + Random.insideUnitSphere * screenShakeMagnitude * (screenShakeTime / initialScreenShakeTime);
 
             screenShakeTime -= Time.deltaTime * fadingSpeed;
         }
@@ -34,5 +36,6 @@ public class ScreenShakeBehavior : MonoBehaviour
     public void TriggerShake(float time)
     {
         screenShakeTime = time;
+        initialScreenShakeTime = time;
     }
 }
