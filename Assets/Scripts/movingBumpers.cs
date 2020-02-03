@@ -14,12 +14,13 @@ public class movingBumpers : MonoBehaviour
    [SerializeField] float leftPosition;
     bool switched = false;
    [SerializeField] bool move = false;
+
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         startingPosition = gameObject.transform.position;
-        movingTimer = movingTime;
+        movingTimer = movingTime; // a deplacer
     }
 
     enum State
@@ -81,7 +82,6 @@ public class movingBumpers : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-            Debug.Log("oui");
         if(collision.gameObject.tag == "RightWall")
         {
             switchDirection = true;
