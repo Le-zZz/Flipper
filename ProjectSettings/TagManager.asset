@@ -9,6 +9,7 @@ TagManager:
   - wall
   - RightWall
   - LeftWall
+  - Ball
   layers:
   - Default
   - TransparentFX
