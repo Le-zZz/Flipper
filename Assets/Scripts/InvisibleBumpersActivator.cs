@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class InvisibleBumpersActivator : MonoBehaviour
 {
-    invisibleBumper invisibleBumper;
+    invisibleBumper[] invisibleBumpers;
+        
     // Start is called before the first frame update
     void Start()
     {
-        invisibleBumper = FindObjectOfType<invisibleBumper>();
+        invisibleBumpers = FindObjectsOfType<invisibleBumper>();
     }
 
     // Update is called once per frame
@@ -20,7 +21,8 @@ public class InvisibleBumpersActivator : MonoBehaviour
     {
         if(collision.gameObject.tag == "Ball")
         {
-            invisibleBumper.MakeVisible();
+            //for(int i =0; i<= invisibleBumpers;i++)
+            //invisibleBumper.MakeVisible();
         }
     }
 }
