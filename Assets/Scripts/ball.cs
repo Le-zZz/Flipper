@@ -16,10 +16,10 @@ public class ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Camera.main.GetComponent<ScreenShakeBehavior>().TriggerShake(0.1f);
-        }
+        //if(Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    Camera.main.GetComponent<ScreenShakeBehavior>().TriggerShake(0.1f);
+        //}
     }
     private void DestroyBall()
     {
@@ -30,5 +30,13 @@ public class ball : MonoBehaviour
     private void OnBecameInvisible()
     {
         DestroyBall();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("CollisionObjects"))
+        {
+            Camera.main.GetComponent<ScreenShakeBehavior>().TriggerShake(0.1f);
+        }
     }
 }
