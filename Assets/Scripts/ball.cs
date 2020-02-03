@@ -16,7 +16,10 @@ public class ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Camera.main.GetComponent<ScreenShakeBehavior>().TriggerShake(0.1f);
+        }
     }
     private void DestroyBall()
     {

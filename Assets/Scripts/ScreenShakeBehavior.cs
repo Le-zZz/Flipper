@@ -1,0 +1,38 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ScreenShakeBehavior : MonoBehaviour
+{
+ 
+    private float screenShakeTime = 0f;
+    private float screenShakeMagnitude = 0.7f;
+    private float fadingSpeed = 1.0f;
+
+    private Vector3 initialPosition;
+
+    private void Start()
+    {
+        initialPosition = transform.localPosition;
+    }
+    
+    void Update()
+    {
+        if(screenShakeTime > 0f)
+        {
+            transform.localPosition = initialPosition + Random.insideUnitSphere * screenShakeMagnitude;
+
+            screenShakeTime -= Time.deltaTime * fadingSpeed;
+        }
+        else
+        {
+            screenShakeTime = 0f;
+            transform.localPosition = initialPosition;
+        }
+    }
+
+    public void TriggerShake(float time)
+    {
+        screenShakeTime = time;
+    }
+}
