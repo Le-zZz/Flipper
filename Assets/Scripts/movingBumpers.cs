@@ -91,4 +91,9 @@ public class movingBumpers : MonoBehaviour
             switchDirection = false;
         }
     }
+    public void Activate()
+    {
+        Debug.Log("okay");
+        move = true;
+    }
 }

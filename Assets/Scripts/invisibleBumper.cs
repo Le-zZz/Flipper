@@ -6,7 +6,7 @@ public class invisibleBumper : MonoBehaviour
 {
     SpriteRenderer sprite;
     CircleCollider2D collider;
-   [SerializeField] bool isVisible = false;
+   [SerializeField] bool isVisible = true;
     [SerializeField] float visibleTime;
     float visibleTimer;
    
@@ -41,7 +41,7 @@ public class invisibleBumper : MonoBehaviour
                 visibleTimer -= Time.deltaTime;
                 sprite.enabled = true;
                 collider.enabled = true;
-                if(visibleTimer <=0)
+                if (visibleTimer <= 0)
                 {
                     isVisible = false;
                     state = State.INVISIBLE;
@@ -51,7 +51,6 @@ public class invisibleBumper : MonoBehaviour
     }
     public void MakeVisible()
     {
-        
         isVisible = true;
     }
    
