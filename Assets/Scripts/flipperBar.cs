@@ -21,7 +21,7 @@ public class flipperBar : MonoBehaviour
                 GetComponent<HingeJoint2D>().useMotor = true;
             }
             if (Input.GetKeyUp("n") && gameObject.tag == "RightFlipper" || Input.GetKeyUp("c") && gameObject.tag == "LeftFlipper")
-        {
+            {
                 GetComponent<HingeJoint2D>().useMotor = false;
             }
         

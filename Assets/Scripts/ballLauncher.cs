@@ -9,7 +9,7 @@ public class ballLauncher : MonoBehaviour
     [SerializeField] float ballSpeed;
     int ballsToLaunch;
     bool canLaunch = true;
-    [SerializeField] int remainingBalls = 4;
+   [SerializeField] int remainingBalls = 4;
     int inGameBalls = 0;
 
     // Start is called before the first frame update
@@ -21,6 +21,7 @@ public class ballLauncher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(inGameBalls);
         checkLaunch();
         if(Input.GetKeyDown("space")&& canLaunch)
         {
@@ -33,10 +34,10 @@ public class ballLauncher : MonoBehaviour
     {
         inGameBalls++;
         remainingBalls--;
+        Debug.Log("remaining balls" + remainingBalls);
     }
     public void ballDestroyed()
     {
-        Debug.Log("3");
         inGameBalls--;
     }
     void checkLaunch()
@@ -45,9 +46,13 @@ public class ballLauncher : MonoBehaviour
         {
             canLaunch = true;
         }
-        else
+        if (inGameBalls >0 || remainingBalls <=0)
         {
             canLaunch = false;
         }
+    }
+    public void additionalBall()
+    {
+        remainingBalls++;
     }
 }

@@ -19,10 +19,12 @@ public class InvisibleBumpersActivator : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Ball")
+        if (collision.gameObject.tag == "Ball")
         {
-            //for(int i =0; i<= invisibleBumpers;i++)
-            //invisibleBumper.MakeVisible();
+            for (int i = 0; i <= invisibleBumpers.Length; i++)
+            {
+                invisibleBumpers[i].MakeVisible();
+            }
         }
     }
 }

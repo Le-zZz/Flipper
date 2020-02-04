@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class ball : MonoBehaviour
 {
-    ballLauncher ballLauncher;
-    Rigidbody2D body;
+    ballLauncher BallLauncher;
     // Start is called before the first frame update
     void Start()
     {
-        ballLauncher = FindObjectOfType<ballLauncher>();
-        body = GetComponent<Rigidbody2D>();
+        BallLauncher = transform.parent.GetComponent<ballLauncher>();
+
+        if (!BallLauncher)
+        {
+            Debug.Log("ERROR");
+        }
     }
 
     // Update is called once per frame
@@ -21,16 +24,13 @@ public class ball : MonoBehaviour
         //    Camera.main.GetComponent<ScreenShakeBehavior>().TriggerShake(0.1f);
         //}
     }
-    private void DestroyBall()
+    public void DestroyBall()
     {
-        Debug.Log("1");
-       ballLauncher.ballDestroyed();
+        Debug.Log("destroy");
+        BallLauncher.ballDestroyed();
         Destroy(gameObject);
     }
-    private void OnBecameInvisible()
-    {
-        DestroyBall();
-    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -38,5 +38,7 @@ public class ball : MonoBehaviour
         {
             Camera.main.GetComponent<ScreenShakeBehavior>().TriggerShake(0.1f);
         }
+
+
     }
 }

@@ -10,8 +10,6 @@ public class movingBumpers : MonoBehaviour
    [SerializeField] float movingTime;
     [SerializeField] float movingSpeed = 1;
     bool switchDirection = false;
-   [SerializeField] float rigthPosition;
-   [SerializeField] float leftPosition;
     bool switched = false;
    [SerializeField] bool move = false;
 
@@ -20,7 +18,6 @@ public class movingBumpers : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         startingPosition = gameObject.transform.position;
-        movingTimer = movingTime; // a deplacer
     }
 
     enum State
@@ -84,6 +81,7 @@ public class movingBumpers : MonoBehaviour
     {
         if(collision.gameObject.tag == "RightWall")
         {
+            Debug.Log("wall");
             switchDirection = true;
         }
         if (collision.gameObject.tag == "LeftWall")

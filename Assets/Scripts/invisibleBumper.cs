@@ -6,6 +6,7 @@ public class invisibleBumper : MonoBehaviour
 {
     SpriteRenderer sprite;
     CircleCollider2D collider;
+    PolygonCollider2D PolygonCollider2D;
    [SerializeField] bool isVisible = true;
     [SerializeField] float visibleTime;
     float visibleTimer;
@@ -15,6 +16,7 @@ public class invisibleBumper : MonoBehaviour
     {
         sprite = gameObject.GetComponent<SpriteRenderer>();
         collider = gameObject.GetComponent<CircleCollider2D>();
+        PolygonCollider2D = gameObject.GetComponent<PolygonCollider2D>();
     }
 
     enum State
@@ -32,6 +34,7 @@ public class invisibleBumper : MonoBehaviour
                 visibleTimer = visibleTime;
                 sprite.enabled = false;
                 collider.enabled = false;
+                PolygonCollider2D.enabled = false;
                 if (isVisible)
                 {
                     state = State.VISIBLE;
@@ -41,6 +44,7 @@ public class invisibleBumper : MonoBehaviour
                 visibleTimer -= Time.deltaTime;
                 sprite.enabled = true;
                 collider.enabled = true;
+                PolygonCollider2D.enabled = true;
                 if (visibleTimer <= 0)
                 {
                     isVisible = false;
