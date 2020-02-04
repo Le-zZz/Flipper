@@ -5,6 +5,7 @@ using UnityEngine;
 public class lightActivator : MonoBehaviour
 {
     [SerializeField] SpriteRenderer bumperLight;
+    [SerializeField] SpriteRenderer score;
     [SerializeField] float lightTime;
     float lightTimer;
     bool lightON = false;
@@ -25,11 +26,13 @@ public class lightActivator : MonoBehaviour
     void Activatedlight()
     {
         bumperLight.enabled = true;
+        score.enabled = true;
         lightTimer -= Time.deltaTime;
         if (lightTimer <= 0)
         {
             lightON = false;
             bumperLight.enabled = false;
+            score.enabled = false;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
