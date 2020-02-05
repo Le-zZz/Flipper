@@ -26,13 +26,19 @@ public class lightActivator : MonoBehaviour
     void Activatedlight()
     {
         bumperLight.enabled = true;
-        score.enabled = true;
+        if (score != null)
+        {
+            score.enabled = true;
+        }
         lightTimer -= Time.deltaTime;
         if (lightTimer <= 0)
         {
             lightON = false;
             bumperLight.enabled = false;
-            score.enabled = false;
+            if (score != null)
+            {
+                score.enabled = false;
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

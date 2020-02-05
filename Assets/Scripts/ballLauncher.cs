@@ -55,4 +55,11 @@ public class ballLauncher : MonoBehaviour
     {
         remainingBalls++;
     }
+    public void LaunchBonusBall()
+    {
+        additionalBall();
+        ballLaunched();
+        GameObject ball = Instantiate(prefabBall, ballSpawnPoint);
+        ball.GetComponent<Rigidbody2D>().velocity = Vector2.up * ballSpeed;
+    }
 }

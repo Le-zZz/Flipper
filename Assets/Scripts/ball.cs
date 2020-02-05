@@ -39,6 +39,5 @@ public class ball : MonoBehaviour
             Camera.main.GetComponent<ScreenShakeBehavior>().TriggerShake(0.1f);
         }
 
-
     }
 }

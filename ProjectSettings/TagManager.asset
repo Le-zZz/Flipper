@@ -10,6 +10,12 @@ TagManager:
   - RightWall
   - LeftWall
   - Ball
+  - leftButton
+  - rightButton
+  - 7Points
+  - 4Points
+  - 3Points
+  - 5Points
   layers:
   - Default
   - TransparentFX
