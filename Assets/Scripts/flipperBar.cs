@@ -18,13 +18,13 @@ public class flipperBar : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown("n") && gameObject.tag == "RightFlipper" || Input.GetKeyDown("c") && gameObject.tag == "LeftFlipper")
-        {
-            GetComponent<HingeJoint2D>().useMotor = true;
-        }
-        if (Input.GetKeyUp("n") && gameObject.tag == "RightFlipper" || Input.GetKeyUp("c") && gameObject.tag == "LeftFlipper")
-        {
-            GetComponent<HingeJoint2D>().useMotor = false;
+        //if (Input.GetKeyDown("n") && gameObject.tag == "RightFlipper" || Input.GetKeyDown("c") && gameObject.tag == "LeftFlipper")
+        //{
+        //    GetComponent<HingeJoint2D>().useMotor = true;
+        //}
+        //if (Input.GetKeyUp("n") && gameObject.tag == "RightFlipper" || Input.GetKeyUp("c") && gameObject.tag == "LeftFlipper")
+        //{
+        //    GetComponent<HingeJoint2D>().useMotor = false;
 
             //if(Input.touchCount >0)
             //{
@@ -42,6 +42,15 @@ public class flipperBar : MonoBehaviour
 
         }
 
+    
+   public void leftFlipperAction()
+    {
+            GetComponent<HingeJoint2D>().useMotor = true;
+    }
+    
+    public void stopMotor()
+    {
+        GetComponent<HingeJoint2D>().useMotor = false;
     }
 }
 

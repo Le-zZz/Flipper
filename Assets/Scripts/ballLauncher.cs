@@ -11,7 +11,7 @@ public class ballLauncher : MonoBehaviour
     bool canLaunch = true;
    [SerializeField] int remainingBalls = 4;
     int inGameBalls = 0;
-
+    bool launch = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,14 +21,18 @@ public class ballLauncher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(inGameBalls);
+        //Debug.Log(inGameBalls);
         checkLaunch();
-        if(Input.GetKeyDown("space")&& canLaunch)
+        if (launch)
         {
-            ballLaunched();
-            GameObject ball = Instantiate(prefabBall, ballSpawnPoint);
-            ball.GetComponent<Rigidbody2D>().velocity = Vector2.up * ballSpeed;
+            LaunchBall();
         }
+        //if(Input.GetKeyDown("space")&& canLaunch)
+        //{
+        //    ballLaunched();
+        //    GameObject ball = Instantiate(prefabBall, ballSpawnPoint);
+        //    ball.GetComponent<Rigidbody2D>().velocity = Vector2.up * ballSpeed;
+        //}
     }
     public void ballLaunched()
     {
@@ -61,5 +65,20 @@ public class ballLauncher : MonoBehaviour
         ballLaunched();
         GameObject ball = Instantiate(prefabBall, ballSpawnPoint);
         ball.GetComponent<Rigidbody2D>().velocity = Vector2.up * ballSpeed;
+    }
+     void LaunchBall()
+    {
+        Debug.Log("launch1");
+        if (canLaunch)
+        {
+            ballLaunched();
+            GameObject ball = Instantiate(prefabBall, ballSpawnPoint);
+            ball.GetComponent<Rigidbody2D>().velocity = Vector2.up * ballSpeed;
+            launch = false;
+        }
+    }
+    public void clickedLauncher()
+    {
+        launch = true;
     }
 }
