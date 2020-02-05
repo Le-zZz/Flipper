@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 8929908359332767837}
   m_Layer: 8
   m_Name: targetLightRedOff
-  m_TagString: Untagged
+  m_TagString: 4Points
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class ballLauncher : MonoBehaviour
 {
@@ -12,10 +14,20 @@ public class ballLauncher : MonoBehaviour
    [SerializeField] int remainingBalls = 4;
     int inGameBalls = 0;
     bool launch = false;
+
+    [SerializeField] private TextMeshProUGUI textBall;
+
+    [SerializeField] private GameObject gameOverPanelUI;
+
+    [SerializeField] AudioSource gameMusic;
+    [SerializeField] AudioSource launcher;
+    [SerializeField] AudioSource gameover;
+   
     // Start is called before the first frame update
     void Start()
     {
         ballSpawnPoint = gameObject.transform;
+        gameMusic.Play();
     }
 
     // Update is called once per frame
@@ -23,10 +35,10 @@ public class ballLauncher : MonoBehaviour
     {
         //Debug.Log(inGameBalls);
         checkLaunch();
-        if (launch)
-        {
-            LaunchBall();
-        }
+        //if (launch)
+        //{
+        //    LaunchBall();
+        //}
         //if(Input.GetKeyDown("space")&& canLaunch)
         //{
         //    ballLaunched();
@@ -36,6 +48,7 @@ public class ballLauncher : MonoBehaviour
     }
     public void ballLaunched()
     {
+        launcher.Play();
         inGameBalls++;
         remainingBalls--;
         Debug.Log("remaining balls" + remainingBalls);
@@ -46,13 +59,21 @@ public class ballLauncher : MonoBehaviour
     }
     void checkLaunch()
     {
+        textBall.text = remainingBalls.ToString();
         if (inGameBalls <= 0)
         {
             canLaunch = true;
         }
-        if (inGameBalls >0 || remainingBalls <=0)
+        if (inGameBalls >0)
         {
             canLaunch = false;
+        }
+        if(remainingBalls <=0&& inGameBalls <=0)
+        {
+            canLaunch = false;
+            ActivateGameOverPanel();
+            gameover.Play();
+            gameMusic.Stop();
         }
     }
     public void additionalBall()
@@ -80,5 +101,11 @@ public class ballLauncher : MonoBehaviour
     public void clickedLauncher()
     {
         launch = true;
+        LaunchBall();
+    }
+    public void ActivateGameOverPanel()
+    {
+        gameOverPanelUI.gameObject.SetActive(true);
+        Time.timeScale = 0f;
     }
 }

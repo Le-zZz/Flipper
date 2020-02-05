@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 225773021}
   m_Layer: 8
   m_Name: InvisibleBumper
-  m_TagString: Untagged
+  m_TagString: 7Points
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isVisible: 0
-  visibleTime: 15
+  visibleTime: 20
 --- !u!50 &3327926228008175827
 Rigidbody2D:
   serializedVersion: 4

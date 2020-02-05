@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RightFlipp : MonoBehaviour
 {
+    [SerializeField] AudioSource flipperSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,7 @@ public class RightFlipp : MonoBehaviour
     }
     public void rightFlipperAction()
     {
+        flipperSound.Play();
             GetComponent<HingeJoint2D>().useMotor = true;   
     }
     public void stopMotor()

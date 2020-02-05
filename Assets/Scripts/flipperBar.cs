@@ -8,6 +8,7 @@ public class flipperBar : MonoBehaviour
     bool leftFlipper = false;
     bool rightFlipper = false;
     [SerializeField] GameObject middleScreen;
+    [SerializeField] AudioSource flipperSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +46,7 @@ public class flipperBar : MonoBehaviour
     
    public void leftFlipperAction()
     {
+        flipperSound.Play();
             GetComponent<HingeJoint2D>().useMotor = true;
     }
     
