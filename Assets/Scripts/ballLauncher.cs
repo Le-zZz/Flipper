@@ -60,15 +60,16 @@ public class ballLauncher : MonoBehaviour
     void checkLaunch()
     {
         textBall.text = remainingBalls.ToString();
+        
         if (inGameBalls <= 0)
         {
             canLaunch = true;
         }
-        if (inGameBalls >0)
+        if (inGameBalls > 0)
         {
             canLaunch = false;
         }
-        if(remainingBalls <=0&& inGameBalls <=0)
+        if(remainingBalls <= 0 && inGameBalls <= 0)
         {
             canLaunch = false;
             ActivateGameOverPanel();
@@ -105,7 +106,7 @@ public class ballLauncher : MonoBehaviour
     }
     public void ActivateGameOverPanel()
     {
-        gameOverPanelUI.gameObject.SetActive(true);
         Time.timeScale = 0f;
+        gameOverPanelUI.SetActive(true);
     }
 }

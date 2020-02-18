@@ -22,15 +22,15 @@ public class touchControls : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if(touchPosition.x >0&& touchPosition.x<2)
+            if(touchPosition.x > 0 && touchPosition.x < 2)
             {
                 rightFlipp.rightFlipperAction();
             }
-            else if( touchPosition.x<0)
+            else if( touchPosition.x < 0)
             {
                 flipperBar.leftFlipperAction();
             }
-            else if(touchPosition.x>2 && touchPosition.y < -3)
+            else if(touchPosition.x > 2 && touchPosition.y < -3)
             {
                 Debug.Log("launch");
                 ballLauncher.clickedLauncher();
