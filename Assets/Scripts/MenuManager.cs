@@ -58,6 +58,7 @@ public class MenuManager : MonoBehaviour
     public void ReturnToMenu()
     {
         SceneManager.LoadScene("SceneMenu");
+        Time.timeScale = 1;
     }
 
     public void Quit()

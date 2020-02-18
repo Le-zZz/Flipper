@@ -12,7 +12,14 @@ public class ballLauncher : MonoBehaviour
     int ballsToLaunch;
     bool canLaunch = true;
    [SerializeField] int remainingBalls = 4;
-    int inGameBalls = 0;
+
+   public int RemainingBalls
+   {
+       get => remainingBalls;
+       set => remainingBalls = value;
+   }
+
+   int inGameBalls = 0;
     bool launch = false;
 
     [SerializeField] private TextMeshProUGUI textBall;
