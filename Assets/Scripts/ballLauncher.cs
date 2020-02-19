@@ -98,8 +98,14 @@ public class ballLauncher : MonoBehaviour
     {
         additionalBall();
         ballLaunched();
-        GameObject ball = Instantiate(prefabBall, ballSpawnPoint);
-        ball.GetComponent<Rigidbody2D>().velocity = Vector2.up * ballSpeed;
+        if (inGameBalls == 0)
+        {
+            GameObject ball = Instantiate(prefabBall, ballSpawnPoint);
+            
+            ball.GetComponent<Rigidbody2D>().velocity = Vector2.up * ballSpeed;
+        }
+        
+        
     }
      void LaunchBall()
     {
