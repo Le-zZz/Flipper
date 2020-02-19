@@ -419,7 +419,7 @@ MonoBehaviour:
   prefabBall: {fileID: 2755449285327032459, guid: 565bf800979c8b54da6365737afc12a3,
     type: 3}
   ballSpeed: 17
-  remainingBalls: 1
+  remainingBalls: 3
   textBall: {fileID: 222118760}
   gameOverPanelUI: {fileID: 251068289}
   gameMusic: {fileID: 95203159}
@@ -8048,6 +8048,11 @@ PrefabInstance:
       propertyPath: m_AngleLimits.m_UpperAngle
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4784958332460933826, guid: ff948fe6244b4994484e2f012ec8425f,
+        type: 3}
+      propertyPath: hasLaunched
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5274829307448942746, guid: ff948fe6244b4994484e2f012ec8425f,
         type: 3}
       propertyPath: flipperSound
@@ -8086,6 +8091,11 @@ PrefabInstance:
     - target: {fileID: 864970946, guid: 869171f5fbc22fc489a79592412dc294, type: 3}
       propertyPath: m_AngleLimits.m_UpperAngle
       value: -144.36215
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356143567518463597, guid: 869171f5fbc22fc489a79592412dc294,
+        type: 3}
+      propertyPath: hasLaunched
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7029506505631217145, guid: 869171f5fbc22fc489a79592412dc294,
         type: 3}

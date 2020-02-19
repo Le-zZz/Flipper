@@ -20,7 +20,14 @@ public class ballLauncher : MonoBehaviour
    }
 
    int inGameBalls = 0;
-    bool launch = false;
+
+   public int InGameBalls
+   {
+       get => inGameBalls;
+       set => inGameBalls = value;
+   }
+
+   bool launch = false;
 
     [SerializeField] private TextMeshProUGUI textBall;
 
@@ -58,7 +65,6 @@ public class ballLauncher : MonoBehaviour
         launcher.Play();
         inGameBalls++;
         remainingBalls--;
-        Debug.Log("remaining balls" + remainingBalls);
     }
     public void ballDestroyed()
     {
