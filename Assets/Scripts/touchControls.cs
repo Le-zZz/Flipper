@@ -24,53 +24,47 @@ public class touchControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ballLauncher.RemainingBalls == 0)
+        if (Input.touchCount > 0)
         {
-            
-        }
-        else
-        {
-            if (Input.touchCount > 0)
+            Touch touch = Input.GetTouch(0);
+            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+
+            if (touch.phase == TouchPhase.Began)
             {
-                Touch touch = Input.GetTouch(0);
-                Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                animator.SetBool("MovementEnd", false);
 
-                if (touch.phase == TouchPhase.Began)
+                Collider2D touchedCollider = Physics2D.OverlapPoint(touchPosition);
+
+                if (touchPosition.x > 0 && touchPosition.x < 2)
                 {
-                    animator.SetBool("MovementEnd", false);
-
-                    Collider2D touchedCollider = Physics2D.OverlapPoint(touchPosition);
-
-                    if (touchPosition.x > 0 && touchPosition.x < 2)
-                    {
-                        rightFlipp.rightFlipperAction();
-                    }
-                    else if (touchPosition.x < 0)
-                    {
-                        flipperBar.leftFlipperAction();
-                    }
-                    else if (touchPosition.x > 2 && touchPosition.y < -3)
-                    {
-                        moveAllowed = true;
-                    }
+                    rightFlipp.rightFlipperAction();
                 }
-
-                if (touch.phase == TouchPhase.Moved && moveAllowed)
+                else if (touchPosition.x < 0)
                 {
-                    animator.SetFloat("YMovement", touch.position.y);
+                    flipperBar.leftFlipperAction();
                 }
-
-                if (touch.phase == TouchPhase.Ended)
-                {
-                    flipperBar.stopMotor();
-                    rightFlipp.stopMotor();
                     
-                    ballLauncher.clickedLauncher();
-
-                    animator.SetBool("MovementEnd", true);
-
-                    moveAllowed = false;
+                if (touchPosition.x > 2 && touchPosition.y < -3)
+                {
+                    moveAllowed = true;
                 }
+            }
+
+            if (touch.phase == TouchPhase.Moved && moveAllowed)
+            {
+                animator.SetFloat("YMovement", touch.position.y);
+            }
+
+            if (touch.phase == TouchPhase.Ended) 
+            {
+                flipperBar.stopMotor();
+                rightFlipp.stopMotor();
+                    
+                ballLauncher.clickedLauncher();
+
+                animator.SetBool("MovementEnd", true);
+
+                moveAllowed = false;
             }
         }
     }
