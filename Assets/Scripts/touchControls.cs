@@ -7,12 +7,18 @@ public class touchControls : MonoBehaviour
     flipperBar flipperBar;
     RightFlipp rightFlipp;
     ballLauncher ballLauncher;
-    // Start is called before the first frame update
+
+    private Animator animator;
+
+    private bool moveAllowed = false;
+    
     void Start()
     {
         flipperBar = FindObjectOfType<flipperBar>();
         rightFlipp = FindObjectOfType<RightFlipp>();
         ballLauncher = FindObjectOfType<ballLauncher>();
+
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -24,7 +30,6 @@ public class touchControls : MonoBehaviour
         }
         else
         {
-            Debug.Log(Input.touchCount);
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
@@ -32,6 +37,7 @@ public class touchControls : MonoBehaviour
 
                 if (touch.phase == TouchPhase.Began)
                 {
+                    animator.SetBool("MovementEnd", false);
 
                     Collider2D touchedCollider = Physics2D.OverlapPoint(touchPosition);
 
@@ -45,15 +51,25 @@ public class touchControls : MonoBehaviour
                     }
                     else if (touchPosition.x > 2 && touchPosition.y < -3)
                     {
-                        Debug.Log("launch");
-                        ballLauncher.clickedLauncher();
+                        moveAllowed = true;
                     }
+                }
+
+                if (touch.phase == TouchPhase.Moved && moveAllowed)
+                {
+                    animator.SetFloat("YMovement", touch.position.y);
                 }
 
                 if (touch.phase == TouchPhase.Ended)
                 {
                     flipperBar.stopMotor();
                     rightFlipp.stopMotor();
+                    
+                    ballLauncher.clickedLauncher();
+
+                    animator.SetBool("MovementEnd", true);
+
+                    moveAllowed = false;
                 }
             }
         }
